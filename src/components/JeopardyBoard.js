@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { answerCorrect, answerIncorrect } from "../features/jeopardySlice";
 
 const questions = [
   { id: 1, question: "What is the largest cat breed?", answer: "Maine Coon", points: 100 },
@@ -9,14 +7,7 @@ const questions = [
 ];
 
 const JeopardyBoard = () => {
-  const dispatch = useDispatch();
   const [revealed, setRevealed] = useState({});
-
-  const handleAnswer = (id, isCorrect, points) => {
-    if (isCorrect) dispatch(answerCorrect(points));
-    else dispatch(answerIncorrect(points));
-    setRevealed({ ...revealed, [id]: true });
-  };
 
   return (
     <div className="jeopardy-board">
@@ -28,8 +19,6 @@ const JeopardyBoard = () => {
           ) : (
             <div>
               <p>{q.question}</p>
-              <button onClick={() => handleAnswer(q.id, true, q.points)}>Correct</button>
-              <button onClick={() => handleAnswer(q.id, false, q.points)}>Incorrect</button>
               <button onClick={() => alert(`Answer: ${q.answer}`)}>Show Answer</button>
             </div>
           )}
