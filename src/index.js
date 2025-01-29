@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // ✅ Use 'react-dom/client' for React 18
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import jeopardyReducer from './features/jeopardySlice';
@@ -12,9 +12,10 @@ const store = configureStore({
   },
 });
 
-ReactDOM.render(
+// ✅ Correct way to render in React 18
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
