@@ -25,7 +25,7 @@ const Question = ({ question }) => {
           <p>{question.question}</p>
           <button onClick={() => handleAnswer(true)}>Correct</button>
           <button onClick={() => handleAnswer(false)}>Incorrect</button>
-          <button onClick={() => setShowAnswer(true)}>Show Answer</button> {/* New Button */}
+          <button onClick={() => setShowAnswer(true)}>Show Answer</button> {/* Show Answer Button */}
           {showAnswer && <p className="answer">Answer: {question.answer}</p>}
         </div>
       )}
